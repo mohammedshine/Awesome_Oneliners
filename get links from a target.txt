@@ -1,0 +1,4 @@
+oneliner to get links from the target itself : 
+
+for h in $(cat hosts.txt); do curl -siL https://$h|sed -n -E "s/.*<.*(href|src|url)[=:]['\"]?([^'\">]+).*/\2/p" ; done
+

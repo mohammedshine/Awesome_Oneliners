@@ -1,0 +1,4 @@
+Find Big-ip for every domains :
+
+cat companyNames.txt | sed -e 's/.com//g' -e 's/.net//g' -e 's/.org//g' -e 's/.info//g' -e 's/.ru//g'|while read url;do test=$(shodan search org:$url http.title:"BIG-IP&reg;-Redirect" | awk '{print $1,$2}');echo -e "\033[32m$url""\033[34m\n$test";done
+Error: No search results found
